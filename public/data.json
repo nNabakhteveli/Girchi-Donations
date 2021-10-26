@@ -2,10 +2,20 @@
   "politicians": [
     {
       "name": "Vakhtang_Megrelishvili",
-      "donations": {
-        "donator": "Sample",
-        "amount": 69420
-      }
+      "donations": [
+        {
+          "donator": "Lorem Ipsum",
+          "amount": 4234
+        },
+        {
+          "donator": "Some random guy",
+          "amount": 5322
+        },
+        {
+          "donator": "Elon Musk",
+          "amount": 2
+        }
+      ]
     },
 
     {
@@ -28,10 +38,20 @@
 
     {
       "name": "Aleksandre_Rakviashvili",
-      "donations": {
-        "donator": "Sample",
-        "amount": 69420
-      }
+      "donations": [
+        {
+          "donator": "Nika Nabakhteveli",
+          "amount": 69420
+        },
+        {
+          "donator": "Otar Zakalashvili",
+          "amount": 532
+        },
+        {
+          "donator": "Bill Gates",
+          "amount": 6
+        }
+      ]
     },
 
     {
@@ -54,10 +74,24 @@
 
     {
       "name": "Otar_Zakalashvili",
-      "donations": {
-        "donator": "Sample",
-        "amount": 69420
-      }
+      "donations": [
+        {
+          "donator": "Nika Nabakhteveli",
+          "amount": 420420
+        },
+        {
+          "donator": "Lasha Markhvaidze",
+          "amount": 4238
+        },
+        {
+          "donator": "Giorgi Pasieshvili",
+          "amount": 9123
+        },
+        {
+          "donator": "Giorgi Keburia",
+          "amount": 5234
+        }
+      ]
     }
   ]
 }
