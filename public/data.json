@@ -1,0 +1,63 @@
+{
+  "politicians": [
+    {
+      "name": "Vakhtang_Megrelishvili",
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
+    },
+
+    {
+      "name": "Iago_Khvichia",
+      "donations": [
+        {
+          "donator": "Nika Nabakhteveli",
+          "amount": 69420
+        },
+        {
+          "donator": "Otar Zakalashvili",
+          "amount": 532
+        },
+        {
+          "donator": "Bill Gates",
+          "amount": 6
+        }
+      ]
+    },
+
+    {
+      "name": "Aleksandre_Rakviashvili",
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
+    },
+
+    {
+      "name": "Herman_Szaboo",
+      "donations": [
+        {
+          "donator": "Jeff Bezos",
+          "amount": 92347
+        },
+        {
+          "donator": "Aleksandre",
+          "amount": 53745
+        },
+        {
+          "donator": "Some Dato",
+          "amount": 5
+        }
+      ]
+    },
+
+    {
+      "name": "Otar_Zakalashvili",
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
+    }
+  ]
+}
