@@ -1,37 +1,31 @@
-politicians: [
+{
+  "politicians": {
     "Vakhtang_Megrelishvili": {
-        "donations": [
-            {
-                "donator": "Someone",
-                "amount": 555
-            }
-        ]        
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
     },
 
     "Iago_Khvichia": {
-        "donations": [
-            {
-                "donator": "Sample",
-                "amount": 5135
-            }
-        ]        
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
     },
 
-    "Aleqsandre_Raqviashvili": {
-        "donations": [
-            {
-                "donator": "Sample",
-                "amount": 69420
-            }
-        ]        
+    "Aleksandre_Rakviashvili": {
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
     },
 
     "Herman_Szaboo": {
-        "donations": [
-            {
-                "donator": "Sample",
-                "amount": 69420
-            }
-        ]        
+      "donations": {
+        "donator": "Sample",
+        "amount": 69420
+      }
     }
-]
+  }
+}
