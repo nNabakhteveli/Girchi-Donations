@@ -3,64 +3,99 @@ import axios from 'axios';
 import './App.css';
 
 
-const DonationsTable = ({ name, donation, date }) => {
-  let randomKey = Math.random() * 10000000000000;
+const FilterByDate = props => {
   return(
-    <tr key={randomKey + 4.13} className="userProps">
-      <td key={randomKey + 3.14}>{name}</td>
-      <td key={randomKey}>{donation}</td>
-      <td key={randomKey + 2}>{date}</td>
+    <select onChange={props.filterHandler} className="filter-by-date">
+      <option defaultValue disabled selected>აირჩიე თვე</option>
+      <option value="October">ოქტომბერი</option>
+      <option value="September">სექტემბერი</option>
+    </select>
+  );
+}
+
+const DonationsTable = ({ name, donation, date }) => {
+  return(
+    <tr key={Math.random() * 100000000} className="userProps">
+      <td key={Math.random() * 100000000 + 3.14}>{name}</td>
+      <td key={Math.random() * 100000000}>{donation}</td>
+      <td key={Math.random() * 100000000}>{date}</td>
     </tr>
   );
 }
 
 function App() {
-  const [selectedPolitican, setSelectedPolitician] = useState("");
-  const [politicianData, setPoliticianData] = useState({});
+  const [selectedPolitican, setSelectedPolitican] = useState("");
+  const [politicanData, setPoliticanData] = useState({});
+  const [filteredDonations, setFilteredDonations] = useState([]);
   const [fetchedData, setFetchedData] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
 
   useEffect(() => {
     axios.get("./data.json").then(response => {
-      setFetchedData(response.data.politicians)
+      setFetchedData(response.data.politicans)
     });
   }, []);
 
-  let startDate = "2021-09-03";
-  let endDate = "2021-09-15"
-  const dateFilter = fetchedData.filter(value => {
-    let donationsArr = value.donations;
 
-    // let date = new Date(donationsArr.date);
-    // console.log(donationsArr);
-    
-    donationsArr.filter(a => {
-      const inDate = new Date(a.date);
-      let date = `${inDate.getYear()}-${inDate.getMonth()}-${inDate.getDay()}`
-      console.log(date);
-      if(date >= startDate && date <= endDate) {
-        // console.log(a);
-      }
-    })
-  });
-
-  // console.log(dateFilter);
-
-
-  
   const selectHandler = e => {
+    setFilteredDonations([]);
     setLoaded(false);
-    setSelectedPolitician(e.target.value);
-    setPoliticianData(fetchedData.find(politician => politician.name === e.target.value)); 
+    setSelectedPolitican(e.target.value);
+    setPoliticanData(fetchedData.find(politican => politican.name === e.target.value)); 
     setLoaded(true);
   }
 
-  let startingDate = new Date("2015-08-04");
+  
+  const filterHandler = e => {
+    switch(e.target.value) {
+      case "October": 
+        setStartDate("2021-10-01");
+        setEndDate("2021-10-31");
+        break;
+  
+      case "September":
+        setStartDate("2021-09-01");
+        setEndDate("2021-09-30");
+        break;
+  
+      default: 
+        console.log("hi");
+    }
+    dateFilter(politicanData.donations);
+  }
+
+  const dateFilter = (donationsArr) => {
+    const instanceObj = {...politicanData};
+    let startingDate = new Date(startDate), endingDate = new Date(endDate);   
+    let arr = [];
+
+    donationsArr.forEach(value => {
+      let date = new Date(value.date);
+      if(date >= startingDate && date <= endingDate) {
+        arr.push(value);
+      } 
+    })
+    setFilteredDonations(arr);
+  }
+
+  let iterableData = filteredDonations.length > 0 ? filteredDonations : politicanData.donations;
+  
+  // useEffect(() => {
+  //   let instance = {...politicanData};
+  //   instance.donations = filteredDonations;
+
+  //   setPoliticanData(instance);
+    
+  // }, [filteredDonations])
+
+
   
   return (
     <div>
-      <button onClick={() => console.log(dateFilter)}>FilterByDate</button>
-      <h1>{politicianData.name}</h1>
+      <h1>{politicanData.name}</h1>
       <label>აირჩიე პოლიტიკოსი</label>
       <br />
       <select onChange={selectHandler}>
@@ -71,16 +106,17 @@ function App() {
         <option value="Otar_Zakalashvili">ოთარ ზაკალაშვილი</option>
       </select>
 
+      { loaded ? <FilterByDate filterHandler={filterHandler} /> : null }
 
-      <table className="table">
+      <table className="table" key={Math.random() * 100000000}>
         <tbody key={13}>
           <tr key={1} className="table-headers">
-            <th key={2}>მომხმარებელი</th>
+            <th key={2}>მომხმარებელი</th>             
             <th key={3}>შემოწირულობა</th>
             <th key={5}>თარიღი</th>
           </tr>
           {
-            loaded ? politicianData.donations.map((value, i) => <DonationsTable name={value.donator} donation={value.amount} date={value.date} />) : null 
+            loaded ? iterableData.map(value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} />) : null 
           }
         </tbody>
       </table>

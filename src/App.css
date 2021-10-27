@@ -10,9 +10,13 @@
 
 .userProps {
   transition: 0.5s;
-  
 }
 
 .userProps:hover {
   background: rgb(206, 198, 198);
+}
+
+.filter-by-date {
+  float: right;
+  margin-right: 30px;
 }
