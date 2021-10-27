@@ -5,7 +5,7 @@
       "name_ge": "ვახტანგ მეგრელიშვილი",
       "donations": [
         {
-          "donator": "Lorem Ipsum",
+          "donator": "Giorgi",
           "amount": 4234,
           "date": "2021-10-15"
         },
@@ -23,17 +23,17 @@
     },
 
     {
-      "name": "Iago_Khvichia",
+      "name": "iago_khvichia",
       "name_ge": "იაგო ხვიჩია",
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
-          "amount": 69420,
+          "amount": 6420,
           "date": "2021-10-17"
         },
         {
           "donator": "Otar Zakalashvili",
-          "amount": 532,
+          "amount": 3532,
           "date": "2021-09-15"
         },
         {
@@ -50,7 +50,7 @@
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
-          "amount": 69420,
+          "amount": 620,
           "date": "2021-09-09"
         },
         {
