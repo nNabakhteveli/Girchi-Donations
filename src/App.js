@@ -3,11 +3,13 @@ import axios from 'axios';
 import './App.css';
 
 
-const DonationsTable = ({ name, donation }) => {
+const DonationsTable = ({ name, donation, date }) => {
+  let randomKey = Math.random() * 10000000000000;
   return(
-    <tr key={Math.random() * 10000000000000}>
-      <td>{name}</td>
-      <td>{donation}</td>
+    <tr key={randomKey + 4.13} className="userProps">
+      <td key={randomKey + 3.14}>{name}</td>
+      <td key={randomKey}>{donation}</td>
+      <td key={randomKey + 2}>{date}</td>
     </tr>
   );
 }
@@ -23,6 +25,28 @@ function App() {
       setFetchedData(response.data.politicians)
     });
   }, []);
+
+  let startDate = "2021-09-03";
+  let endDate = "2021-09-15"
+  const dateFilter = fetchedData.filter(value => {
+    let donationsArr = value.donations;
+
+    // let date = new Date(donationsArr.date);
+    // console.log(donationsArr);
+    
+    donationsArr.filter(a => {
+      const inDate = new Date(a.date);
+      let date = `${inDate.getYear()}-${inDate.getMonth()}-${inDate.getDay()}`
+      console.log(date);
+      if(date >= startDate && date <= endDate) {
+        // console.log(a);
+      }
+    })
+  });
+
+  // console.log(dateFilter);
+
+
   
   const selectHandler = e => {
     setLoaded(false);
@@ -30,10 +54,12 @@ function App() {
     setPoliticianData(fetchedData.find(politician => politician.name === e.target.value)); 
     setLoaded(true);
   }
-  
 
+  let startingDate = new Date("2015-08-04");
+  
   return (
     <div>
+      <button onClick={() => console.log(dateFilter)}>FilterByDate</button>
       <h1>{politicianData.name}</h1>
       <label>აირჩიე პოლიტიკოსი</label>
       <br />
@@ -47,12 +73,15 @@ function App() {
 
 
       <table className="table">
-        <tbody key={Math.random() * 10000000000000}>
-          <tr>
-            <th>მომხმარებელი</th>
-            <th>შემოწირულობა</th>
+        <tbody key={13}>
+          <tr key={1} className="table-headers">
+            <th key={2}>მომხმარებელი</th>
+            <th key={3}>შემოწირულობა</th>
+            <th key={5}>თარიღი</th>
           </tr>
-          {loaded ? politicianData.donations.map(value => <DonationsTable name={value.donator} donation={value.amount} />) : null }
+          {
+            loaded ? politicianData.donations.map((value, i) => <DonationsTable name={value.donator} donation={value.amount} date={value.date} />) : null 
+          }
         </tbody>
       </table>
     </div>

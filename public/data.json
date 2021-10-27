@@ -5,15 +5,18 @@
       "donations": [
         {
           "donator": "Lorem Ipsum",
-          "amount": 4234
+          "amount": 4234,
+          "date": "2021-10-15"
         },
         {
           "donator": "Some random guy",
-          "amount": 5322
+          "amount": 5322,
+          "date": "2021-09-15"
         },
         {
           "donator": "Elon Musk",
-          "amount": 2
+          "amount": 2,
+          "date": "2021-10-11"
         }
       ]
     },
@@ -23,15 +26,18 @@
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
-          "amount": 69420
+          "amount": 69420,
+          "date": "2021-10-17"
         },
         {
           "donator": "Otar Zakalashvili",
-          "amount": 532
+          "amount": 532,
+          "date": "2021-09-15"
         },
         {
           "donator": "Bill Gates",
-          "amount": 6
+          "amount": 6,
+          "date": "2021-10-15"
         }
       ]
     },
@@ -41,15 +47,18 @@
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
-          "amount": 69420
+          "amount": 69420,
+          "date": "2021-09-09"
         },
         {
           "donator": "Otar Zakalashvili",
-          "amount": 532
+          "amount": 532,
+          "date": "2021-11-15"
         },
         {
           "donator": "Bill Gates",
-          "amount": 6
+          "amount": 6,
+          "date": "2021-09-15"
         }
       ]
     },
@@ -59,15 +68,18 @@
       "donations": [
         {
           "donator": "Jeff Bezos",
-          "amount": 92347
+          "amount": 92347,
+          "date": "2021-07-15"
         },
         {
           "donator": "Aleksandre",
-          "amount": 53745
+          "amount": 53745,
+          "date": "2021-09-17"
         },
         {
           "donator": "Some Dato",
-          "amount": 5
+          "amount": 5,
+          "date": "2021-11-15"
         }
       ]
     },
@@ -77,19 +89,23 @@
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
-          "amount": 420420
+          "amount": 420420,
+          "date": "2021-10-26"
         },
         {
           "donator": "Lasha Markhvaidze",
-          "amount": 4238
+          "amount": 4238,
+          "date": "2021-09-15"
         },
         {
           "donator": "Giorgi Pasieshvili",
-          "amount": 9123
+          "amount": 9123,
+          "date": "2021-09-03"
         },
         {
           "donator": "Giorgi Keburia",
-          "amount": 5234
+          "amount": 5234,
+          "date": "2021-09-15"
         }
       ]
     }
