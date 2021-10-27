@@ -2,6 +2,7 @@
   "politicans": [
     {
       "name": "Vakhtang_Megrelishvili",
+      "name_ge": "ვახტანგ მეგრელიშვილი",
       "donations": [
         {
           "donator": "Lorem Ipsum",
@@ -23,6 +24,7 @@
 
     {
       "name": "Iago_Khvichia",
+      "name_ge": "იაგო ხვიჩია",
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
@@ -44,6 +46,7 @@
 
     {
       "name": "Aleksandre_Rakviashvili",
+      "name_ge": "ალექსანდრე რაქვიაშვილი",
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
@@ -65,6 +68,7 @@
 
     {
       "name": "Herman_Szaboo",
+      "name_ge": "ჰერმან საბო",
       "donations": [
         {
           "donator": "Jeff Bezos",
@@ -86,25 +90,26 @@
 
     {
       "name": "Otar_Zakalashvili",
+      "name_ge": "ოთარ ზაკალაშვილი",
       "donations": [
         {
           "donator": "Nika Nabakhteveli",
-          "amount": 420420,
+          "amount": 420,
           "date": "2021-10-26"
         },
         {
           "donator": "Lasha Markhvaidze",
-          "amount": 4238,
+          "amount": 108,
           "date": "2021-09-15"
         },
         {
           "donator": "Giorgi Pasieshvili",
-          "amount": 9123,
+          "amount": 53,
           "date": "2021-09-03"
         },
         {
           "donator": "Giorgi Keburia",
-          "amount": 5234,
+          "amount": 219,
           "date": "2021-09-15"
         }
       ]
