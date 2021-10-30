@@ -66,7 +66,7 @@ function App() {
       setFetchedData(response.data.politicans)
 
       if(Object.keys(parsedUrlQuery.query).length > 0) {  
-        let filteredData = response.data.politicans.find(value => value.name === parsedUrlQuery.query.politican)
+        let filteredData = response.data.politicans.find(value => value.name.toLowerCase() === parsedUrlQuery.query.politican.toLowerCase())
         setPoliticanData(filteredData);
         setHasQueryString(true);
         setLoaded(true);
@@ -81,7 +81,7 @@ function App() {
     }
     setFilteredDonations([]);
     setLoaded(false);
-    setPoliticanData(fetchedData.find(politican => politican.name === e.target.value)); 
+    setPoliticanData(fetchedData.find(politican => politican.name.toLowerCase() === e.target.value.toLowerCase())); 
     setLoaded(true);
   }
 
@@ -116,6 +116,8 @@ function App() {
     }
   }, [startDate])
 
+  console.log(fetchedData);
+  // console.log(politicanData.name_ge, politicanData.donations);
   const iterableData = filteredDonations.length > 0 ? filteredDonations : politicanData.donations;
 
   return (
