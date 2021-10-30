@@ -8,20 +8,20 @@ const DynamicTableRows = props => {
   if(!props.hasQueryString) {
     return(
       props.isLoaded ? props.iterableData.map(
-        value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} />) : null 
+        (value, index) => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={index} />) : null 
     );
   }
-  return props.iterableData.map(value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} />)
+  return props.iterableData.map((value, i) => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={i} />)
 }
 
 const Table = props => {
   return(
-  <table className="table" key={21}>
-    <tbody key="table-body">
-      <tr key="static-row" className="table-headers">
-        <th key="user">მომხმარებელი</th>             
-        <th key="user-donation">შემოწირულობა</th>
-        <th key="donation-date">თარიღი</th>
+  <table className="table">
+    <tbody>
+      <tr className="table-headers">
+        <th>მომხმარებელი</th>             
+        <th>შემოწირულობა</th>
+        <th>თარიღი</th>
       </tr>
       <DynamicTableRows hasQueryString={props.hasQueryString} isLoaded={props.isLoaded} iterableData={props.iterableData} />
     </tbody>
@@ -31,20 +31,20 @@ const Table = props => {
 
 const FilterByDate = ({ filterHandler }) => {
   return(
-    <select key={10} onChange={filterHandler} className="filter-by-date" defaultValue={"აირჩიე თვე"}>
-      <option defaultValue disabled key={11}>აირჩიე თვე</option>
-      <option value="October" key={12}>ოქტომბერი</option>
-      <option value="September" key={13}>სექტემბერი</option>
+    <select onChange={filterHandler} className="filter-by-date" defaultValue={"აირჩიე თვე"}>
+      <option defaultValue disabled>აირჩიე თვე</option>
+      <option value="October">ოქტომბერი</option>
+      <option value="September">სექტემბერი</option>
     </select>
   );
 }
 
 const DonationsTable = ({ name, donation, date }) => {
   return(
-    <tr key="changableList" className="userProps">
-      <td key="name">{name}</td>
-      <td key="donation">{donation} ₾</td>
-      <td key="date">{date}</td>
+    <tr className="userProps">
+      <td>{name}</td>
+      <td>{donation} ₾</td>
+      <td>{date}</td>
     </tr>
   );
 }
@@ -123,12 +123,12 @@ function App() {
         <div className="select-politican">
         <label>აირჩიე პოლიტიკოსი</label>
         <br />
-        <select onChange={selectHandler} key={20}>
-          <option value="Vakhtang_Megrelishvili" key={14}>ვახტანგ მეგრელიშვილი</option>
-          <option value="Iago_Khvichia" key={15}>იაგო ხვიჩია</option>
-          <option value="Aleksandre_Rakviashvili" key={16}>ალექსანდრე რაქვიაშვილი</option>
-          <option value="Herman_Szaboo" key={17}>ჰერმან საბო</option>
-          <option value="Otar_Zakalashvili" key={18}>ოთარ ზაკალაშვილი</option>
+        <select onChange={selectHandler}>
+          <option value="Vakhtang_Megrelishvili">ვახტანგ მეგრელიშვილი</option>
+          <option value="Iago_Khvichia">იაგო ხვიჩია</option>
+          <option value="Aleksandre_Rakviashvili">ალექსანდრე რაქვიაშვილი</option>
+          <option value="Herman_Szaboo">ჰერმან საბო</option>
+          <option value="Otar_Zakalashvili">ოთარ ზაკალაშვილი</option>
         </select>
       </div>
       { isLoaded ? <FilterByDate filterHandler={filterHandler} /> : null }
