@@ -18,7 +18,7 @@
 
 .filter-by-date {
   float: right;
-  margin-right: 30px;
+  margin: 0 30px 10px 0;
 }
 
 .politican-name {
@@ -27,5 +27,6 @@
 }
 
 .select-politican, p {
-  margin-left: 10px;
+  margin: 20px 0 0 10px;
+  width: fit-content;
 }

@@ -31,11 +31,13 @@ const Table = props => {
 
 const FilterByDate = ({ filterHandler }) => {
   return(
-    <select onChange={filterHandler} className="filter-by-date" defaultValue={"აირჩიე თვე"}>
-      <option defaultValue disabled>აირჩიე თვე</option>
-      <option value="October">ოქტომბერი</option>
-      <option value="September">სექტემბერი</option>
-    </select>
+    <div className="filter-by-date">
+      <select onChange={filterHandler} className="form-select" defaultValue={"აირჩიე თვე"}>
+        <option defaultValue disabled>აირჩიე თვე</option>
+        <option value="October">ოქტომბერი</option>
+        <option value="September">სექტემბერი</option>
+      </select>
+    </div>
   );
 }
 
@@ -116,23 +118,20 @@ function App() {
     }
   }, [startDate])
 
-  console.log(fetchedData);
-  // console.log(politicanData.name_ge, politicanData.donations);
   const iterableData = filteredDonations.length > 0 ? filteredDonations : politicanData.donations;
 
   return (
     <div>
-        <div className="select-politican">
-        <label>აირჩიე პოლიტიკოსი</label>
-        <br />
-        <select onChange={selectHandler}>
+        { !hasQueryString ? <div className="select-politican">
+        <select onChange={selectHandler} className="form-select politican-selector" defaultValue={"აირჩიე პოლიტიკოსი"}>
+          <option defaultValue disabled>აირჩიე პოლიტიკოსი</option>
           <option value="Vakhtang_Megrelishvili">ვახტანგ მეგრელიშვილი</option>
           <option value="Iago_Khvichia">იაგო ხვიჩია</option>
           <option value="Aleksandre_Rakviashvili">ალექსანდრე რაქვიაშვილი</option>
-          <option value="Herman_Szaboo">ჰერმან საბო</option>
           <option value="Otar_Zakalashvili">ოთარ ზაკალაშვილი</option>
+          <option value="Herman_Szaboo">ჰერმან საბო</option>
         </select>
-      </div>
+      </div> : null }
       { isLoaded ? <FilterByDate filterHandler={filterHandler} /> : null }
       { isLoaded ? <p className="politican-name">პოლიტიკოსი: {politicanData.name_ge}</p> : null }
       
