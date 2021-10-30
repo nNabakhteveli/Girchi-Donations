@@ -6,4 +6,4 @@ In the project directory, you can run:
 
 ## or
 
-### `npm start` to run the project
+`npm start` to run the project
