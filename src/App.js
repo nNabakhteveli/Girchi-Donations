@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 import axios from 'axios';
 import Url from 'url-parse';
 import './App.css';
@@ -8,10 +9,10 @@ const DynamicTableRows = props => {
   if(!props.hasQueryString) {
     return(
       props.isLoaded ? props.iterableData.map(
-        (value, index) => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={index} />) : null 
+        value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={nanoid()} />) : null 
     );
   }
-  return props.iterableData.map((value, i) => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={i} />)
+  return props.iterableData.map(value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={nanoid()} />)
 }
 
 const Table = props => {
