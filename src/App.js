@@ -47,7 +47,7 @@ const DonationsTable = ({ name, donation, date }) => {
   return(
     <tr className="userProps">
       <td>{name}</td>
-      <td>{donation} ₾</td>
+      <td>{donation} ₾ ≈ {donation * 32} GeD</td>
       <td>{date}</td>
     </tr>
   );
