@@ -35,6 +35,7 @@ const FilterByDate = ({ filterHandler }) => {
     <div className="filter-by-date">
       <select onChange={filterHandler} className="form-select" defaultValue={"აირჩიე თვე"}>
         <option defaultValue disabled>აირჩიე თვე</option>
+        <option value='sum'>ყველა თვე</option>
         <option value="October">ოქტომბერი</option>
         <option value="September">სექტემბერი</option>
       </select>
@@ -49,6 +50,21 @@ const DonationsTable = ({ name, donation, date }) => {
       <td>{donation} ₾</td>
       <td>{date}</td>
     </tr>
+  );
+}
+
+const SelectPolitican = ({ changeHandler }) => {
+  return(
+    <div className="select-politican">
+      <select onChange={changeHandler} className="form-select politican-selector" defaultValue={"აირჩიე პოლიტიკოსი"}>
+        <option defaultValue disabled>აირჩიე პოლიტიკოსი</option>
+        <option value="Vakhtang_Megrelishvili">ვახტანგ მეგრელიშვილი</option>
+        <option value="Iago_Khvichia">იაგო ხვიჩია</option>
+        <option value="Aleksandre_Rakviashvili">ალექსანდრე რაქვიაშვილი</option>
+        <option value="Otar_Zakalashvili">ოთარ ზაკალაშვილი</option>
+        <option value="Herman_Szaboo">ჰერმან საბო</option>
+      </select>
+    </div>
   );
 }
 
@@ -99,6 +115,11 @@ function App() {
         setStartDate(new Date("2021-09-01"));
         setEndDate(new Date("2021-09-30"));
         break;
+
+      case "sum":
+        setStartDate({});
+        setEndDate({});
+        break;
   
       default: break;
     }
@@ -123,19 +144,15 @@ function App() {
 
   return (
     <div>
-        { !hasQueryString ? <div className="select-politican">
-        <select onChange={selectHandler} className="form-select politican-selector" defaultValue={"აირჩიე პოლიტიკოსი"}>
-          <option defaultValue disabled>აირჩიე პოლიტიკოსი</option>
-          <option value="Vakhtang_Megrelishvili">ვახტანგ მეგრელიშვილი</option>
-          <option value="Iago_Khvichia">იაგო ხვიჩია</option>
-          <option value="Aleksandre_Rakviashvili">ალექსანდრე რაქვიაშვილი</option>
-          <option value="Otar_Zakalashvili">ოთარ ზაკალაშვილი</option>
-          <option value="Herman_Szaboo">ჰერმან საბო</option>
-        </select>
-      </div> : null }
-      { isLoaded ? <FilterByDate filterHandler={filterHandler} /> : null }
-      { isLoaded ? <p className="politican-name">პოლიტიკოსი: {politicanData.name_ge}</p> : null }
+      { !hasQueryString ? <SelectPolitican changeHandler={selectHandler} />  : null }
       
+      { isLoaded ? 
+          <>
+            <FilterByDate filterHandler={filterHandler} />
+            <p className="politican-name">პოლიტიკოსი: {politicanData.name_ge}</p> 
+          </>
+        : null } 
+
       <Table isLoaded={isLoaded} iterableData={iterableData} hasQueryString={hasQueryString} />
     </div>
   );
