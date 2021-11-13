@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { nanoid } from 'nanoid';
 import axios from 'axios';
 import Url from 'url-parse';
 import './App.css';
 
 
-const DynamicTableRows = props => {
-  if(!props.hasQueryString) {
+const TableContext = React.createContext();
+
+const DynamicTableRows = () => {
+  const context = useContext(TableContext);
+  if(!context.hasQueryString) {
     return(
-      props.isLoaded ? props.iterableData.map(
+      context.isLoaded ? context.iterableData.map(
         value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={nanoid()} />) : null 
     );
   }
-  return props.iterableData.map(value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={nanoid()} />)
+  return context.iterableData.map(value => <DonationsTable name={value.donator} donation={value.amount} date={value.date} key={nanoid()} />)
 }
 
 const Table = props => {
@@ -142,18 +145,21 @@ function App() {
 
   const iterableData = filteredDonations.length > 0 ? filteredDonations : politicanData.donations;
 
+  let contextStates = {hasQueryString, isLoaded, iterableData};
   return (
     <div>
-      { !hasQueryString ? <SelectPolitican changeHandler={selectHandler} />  : null }
-      
-      { isLoaded ? 
-          <>
-            <FilterByDate filterHandler={filterHandler} />
-            <p className="politican-name">პოლიტიკოსი: {politicanData.name_ge}</p> 
-          </>
-        : null } 
+      <TableContext.Provider value={contextStates}>
+        { !hasQueryString ? <SelectPolitican changeHandler={selectHandler} />  : null }
 
-      <Table isLoaded={isLoaded} iterableData={iterableData} hasQueryString={hasQueryString} />
+        { isLoaded ? 
+            <>
+              <FilterByDate filterHandler={filterHandler} />
+              <p className="politican-name">პოლიტიკოსი: {politicanData.name_ge}</p> 
+            </>
+          : null } 
+
+        <Table isLoaded={isLoaded} iterableData={iterableData} hasQueryString={hasQueryString} />
+      </TableContext.Provider>
     </div>
   );
 }
